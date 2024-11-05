@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wajkies To-do app</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="taskWrapper">
+        <div id="navbar">
+            <input type="search" name="taskSearch" id="taskSearch">
+        </div>
+        <div id="taskProgressBar">Task progressbar</div>
+        <div id="taskcard">
+            <span>Deadline</span>
+            <h3>Task Title</h3>
+            <h5>Task category</h5>
+            <p>Task description <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Distinctio soluta debitis cupiditate libero commodi corrupti.
+            </p>
+        </div>
+    </div>
+    <div id="newTask">
+        <form id="newTaskForm">
+            <h3>Lägg till ny task</h3>
+            <input type="text"  id="taskTitle"><br>
+            <input type="text"  id="taskCategory"><br>
+            <input type="date"  id="taskDeadline"><br>
+            <textarea name="taskDescription" id="taskDescription" cols="30" rows="10"></textarea>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
