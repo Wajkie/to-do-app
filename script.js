@@ -1,41 +1,39 @@
 const Tasks =[30];
 const taskForm = document.querySelector('#newTaskForm');
-const NewTaskbtn = document.getElementById("btnNewTask");
 const inputbar = document.querySelector('input');
-
-
-function updateValue(e) {
-    log.textContent = e.target.value;
-  }
-taskForm.addEventListener('submit', (e) => {
-
-    e.preventDefault();
-    for (i = 0; i < taskForm.length;i++) {
-        if (taskForm[i].value !== "submit") {
-            Tasks.push(taskForm[i].value);
-        }
-    }
-    console.log(Tasks);
+const taskWrapper = document.querySelector('#taskWrapper');
+const resetBtn = document.querySelector("#reset");
+let dateNOw = Date();
+resetBtn.addEventListener('click', () => {
+	localStorage.removeItem("taskWrapper");
+	taskWrapper.innerHTML = '';
 });
 
-// const taskTemplate = `
-// <div id="${taskName}">
-//     <span>${taskPosted}</span>
-//     <h3>${taskTitle}</h3>
-//     <p>${taskCategory}</p>
-//     <p>${taskdescription}</p>
-//     <p>${taskDeadline}</p>
-// </div>
-// `
-// const taskbuilder = {
-//     title:'',
-//     category:'',
-//     description:'',
-//     posted: '',
-//     generator: function() {
-//         return taskTemplate;
-//     }
-// }
-// const timeDiff = function () {
+taskForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+const taskdiv = document.createElement('div');
+taskdiv.setAttribute('id', taskForm.taskTitle.value);
+taskWrapper.appendChild(taskdiv);
+const removeBtn = document.createElement('div');
+removeBtn.setAttribute('class', 'remove');
+removeBtn.textContent = 'X';
+	taskdiv.innerHTML = `
+		<h3>${taskForm.taskTitle.value}</h3>
+		<span> Posted: ${dateNOw}</span>
+		<p>Deadline: ${taskForm.taskDeadline.value}</p>
+		<p> Task category: ${taskForm.taskCategory.value}</p>
+		<p>Task description: ${taskForm.taskDescription.value}</p>
+	`
+	taskdiv.appendChild(removeBtn);
+	localStorage.setItem("taskWrapper", taskWrapper.innerHTML);
 
-// }
+});
+taskWrapper.innerHTML = localStorage.getItem("taskWrapper");
+taskWrapper.addEventListener('click', (e) => {
+	if (e.target == document.querySelector(".remove")){
+	const aa = e.target.parentElement;
+	aa.remove();
+	}
+});
+
+

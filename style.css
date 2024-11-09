@@ -9,3 +9,8 @@
     background-color: coral;
 }
 
+.remove:hover {
+	cursor: pointer;
+	width: fit-content;
+	background-color: red;
+}
